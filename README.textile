@@ -9,7 +9,7 @@ If you have comments and suggestions, please use this project's issue tracker in
 
 h2. API
 
-The status of the API implementation is:
+The status of the "API":http://dev.w3.org/html5/websockets/ implementation is:
 
 h3. Constructors
 
