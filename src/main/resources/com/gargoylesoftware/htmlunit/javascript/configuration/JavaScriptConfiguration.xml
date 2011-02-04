@@ -3118,6 +3118,20 @@
         </function>
     </class>
 
+    <class classname="com.gargoylesoftware.htmlunit.javascript.host.WebSocket"
+        jsConstructor="jsConstructor" JSObject="true">
+        <doclink url="http://dev.w3.org/html5/websockets/" descr="W3C WebSocket API"/>
+        <property name="readyState" readable="true" writable="false"/>
+        <property name="bufferedAmount" readable="true" writable="false"/>
+        <property name="onopen" readable="true" writable="true"/>
+        <property name="onmessage" readable="true" writable="true" />
+        <property name="onerror" readable="true" writable="true"/>
+        <property name="onclose" readable="true" writable="true"/>
+        <property name="protocol" readable="true" writable="false"/>
+        <function name="send"/>
+        <function name="close"/>
+    </class>
+
     <class extends="Attr" classname="com.gargoylesoftware.htmlunit.javascript.host.xml.XMLAttr"
         JSObject="true">
         <property name="text" readable="true" writable="true">

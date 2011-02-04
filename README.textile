@@ -1,0 +1,35 @@
+h1. HTMLUnit with WebSocket support
+
+This is a (temporary) fork of HTMLUnit with the purpose of adding WebSocket support. The fork is an import of revision 6270 of https://htmlunit.svn.sourceforge.net/svnroot/htmlunit/trunk/htmlunit
+
+I didn't use git-svn as I couldn't get it to work. This means this fork won't be kept in sync with the official HTMLUnit in Subversion. Instead, a complete patch will be sent to the HTMLUnit project when WebSocket support is good enough.
+
+Currently the following callbacks are implemented:
+
+* <code>onopen</code>
+* <code>onmessage</code>
+
+h2. Hacking
+
+If you want to hack on this, the test you want to run is <code>com.gargoylesoftware.htmlunit.javascript.host.WebSocketTest</code>. This test uses "Webbit":https://github.com/joewalnes/webbit - a fast async Web Server. Until Webbit lands in a Maven repo, you can install it in your local Maven repo by cloning the Webbit repo and run:
+
+<pre>
+make
+mvn install:install-file -DgroupId=webbit -DartifactId=webbit -Dversion=0.0.1 -Dpackaging=jar -Dfile=build/webbit.jar
+</pre>
+
+h2. Implementation
+
+HTMLUnit uses "Apache HTTP Components":http://hc.apache.org/ elsewhere in the code, but since it doesn't implement the WebSocket protocol I couldn't use that. I also looked at "Ning Async Http Client":https://github.com/AsyncHttpClient/async-http-client, but it doesn't implement WebSocket either.
+
+I therefore went with "Adam MacBeth's WebSocket Client":https://github.com/adamac/Java-WebSocket-client, which now lives in <code>com.gargoylesoftware.htmlunit.javascript.host.WebSocketImpl</code>. As Adam mentions in the "README":https://github.com/adamac/Java-WebSocket-client/blob/master/README his implementation is out of date with the current spec, but it's good enough for my purposes for now.
+
+I may switch to https://github.com/TooTallNate/Java-WebSocket or any other library that implements the protocol more faithfully later.
+
+h2. Todos
+
+Currently the WebSocket must be closed in Javascript, or your JUnit tests will hang. Comment out the <code>ws.close();</code> in <code>com.gargoylesoftware.htmlunit.javascript.host.WebSocketTest</code> to see this.
+
+I haven't found a way to work around this, so contributions are welcome.
+
+The Javascript API in <code>com.gargoylesoftware.htmlunit.javascript.host.WebSocket</code> is not fully implemented yet. For example, <code>readyState</code> is not set, <code>onclose</code> and <code>onerror</code> are not called etc.
