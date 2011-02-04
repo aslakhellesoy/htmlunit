@@ -3121,6 +3121,7 @@
     <class classname="com.gargoylesoftware.htmlunit.javascript.host.WebSocket"
         jsConstructor="jsConstructor" JSObject="true">
         <doclink url="http://dev.w3.org/html5/websockets/" descr="W3C WebSocket API"/>
+        <property name="url" readable="true" writable="false"/>
         <property name="readyState" readable="true" writable="false"/>
         <property name="bufferedAmount" readable="true" writable="false"/>
         <property name="onopen" readable="true" writable="true"/>

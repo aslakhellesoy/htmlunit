@@ -4,14 +4,36 @@ This is a (temporary) fork of HTMLUnit with the purpose of adding WebSocket supp
 
 I didn't use git-svn as I couldn't get it to work. This means this fork won't be kept in sync with the official HTMLUnit in Subversion. Instead, a complete patch will be sent to the HTMLUnit project when WebSocket support is good enough.
 
-Currently the following callbacks are implemented:
-
-* <code>onopen</code>
-* <code>onmessage</code>
-
-There is already an "open ticket":https://sourceforge.net/tracker/?func=detail&atid=448269&aid=3026502&group_id=47038 in HTMLUnit's issue tracker, but I'm not aware that anyone else has started working on it yet.
-
+HTMLUnit's issue tracker has an "open ticket":https://sourceforge.net/tracker/?func=detail&atid=448269&aid=3026502&group_id=47038 for WebSocket support, but I'm not aware that anyone else has started working on it yet.
 If you have comments and suggestions, please use this project's issue tracker instead of sending me personal messages, so that other interested people can join the discussion.
+
+h2. API
+
+The status of the API implementation is:
+
+h3. Constructors
+
+* <code>WebSocket(url)</code>: *Implemented*
+* <code>WebSocket(url, protocols)</code>: Not Implemented
+
+h3. Event Handlers
+
+* <code>onopen</code>: *Implemented*
+* <code>onmessage</code>: *Implemented*
+* <code>onerror</code>: Not Implemented
+* <code>onclose</code>: Not Implemented
+
+h3. Readonly Properties
+
+* <code>url</code>: *Implemented*
+* <code>readyState</code>: Not Implemented
+* <code>bufferedAmount</code>: Not Implemented
+* <code>protocol</code>: Not Implemented
+
+h3. Functions
+
+* <code>send</code>: *Implemented*
+* <code>close</code>: *Implemented*
 
 h2. Hacking
 
@@ -32,8 +54,8 @@ I may switch to https://github.com/TooTallNate/Java-WebSocket or any other libra
 
 h2. Todos
 
+# Implement the entire Javascript API
+# Find a way to close al websockets if the page doesn't do it itself.
+
 Currently the WebSocket must be closed in Javascript, or your JUnit tests will hang. Comment out the <code>ws.close();</code> in <code>com.gargoylesoftware.htmlunit.javascript.host.WebSocketTest</code> to see this.
-
 I haven't found a way to work around this, so contributions are welcome.
-
-The Javascript API in <code>com.gargoylesoftware.htmlunit.javascript.host.WebSocket</code> is not fully implemented yet. For example, <code>readyState</code> is not set, <code>onclose</code> and <code>onerror</code> are not called etc.

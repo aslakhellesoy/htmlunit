@@ -38,8 +38,10 @@ public class WebSocket extends SimpleScriptable {
     private int readerId;
     private HtmlPage page;
     private JavaScriptEngine jsEngine;
+    private Object urlParam;
 
     public void jsConstructor(Object urlParam) throws IOException, URISyntaxException {
+        this.urlParam = urlParam;
         page = (HtmlPage) getWindow().getWebWindow().getEnclosedPage();
         jsEngine = page.getWebClient().getJavaScriptEngine();
         final URI url = page.getFullyQualifiedUrl(Context.toString(urlParam)).toURI();
@@ -79,6 +81,10 @@ public class WebSocket extends SimpleScriptable {
             }
         };
         readerId = getWindow().getWebWindow().getJobManager().addJob(job, page);
+    }
+
+    public Object jsxGet_url() {
+        return urlParam;
     }
 
     public int jsxGet_readyState() {
