@@ -9,6 +9,10 @@ Currently the following callbacks are implemented:
 * <code>onopen</code>
 * <code>onmessage</code>
 
+There is already an "open ticket":https://sourceforge.net/tracker/?func=detail&atid=448269&aid=3026502&group_id=47038 in HTMLUnit's issue tracker, but I'm not aware that anyone else has started working on it yet.
+
+If you have comments and suggestions, please use this project's issue tracker instead of sending me personal messages, so that other interested people can join the discussion.
+
 h2. Hacking
 
 If you want to hack on this, the test you want to run is <code>com.gargoylesoftware.htmlunit.javascript.host.WebSocketTest</code>. This test uses "Webbit":https://github.com/joewalnes/webbit - a fast async Web Server. Until Webbit lands in a Maven repo, you can install it in your local Maven repo by cloning the Webbit repo and run:
