@@ -5,6 +5,9 @@ This is a (temporary) fork of HTMLUnit with the purpose of adding WebSocket supp
 I didn't use git-svn as I couldn't get it to work. This means this fork won't be kept in sync with the official HTMLUnit in Subversion. Instead, a complete patch will be sent to the HTMLUnit project when WebSocket support is good enough.
 
 HTMLUnit's issue tracker has an "open ticket":https://sourceforge.net/tracker/?func=detail&atid=448269&aid=3026502&group_id=47038 for WebSocket support, but I'm not aware that anyone else has started working on it yet.
+
+EDIT: I've been made aware of an unmerged "patch":http://gwt-code-reviews.appspot.com/699801/show by Marko Vuksanovic. It's certainly more elaborate than this fork. You may want to apply that patch instead...
+
 If you have comments and suggestions, please use this project's issue tracker instead of sending me personal messages, so that other interested people can join the discussion.
 
 h2. API
@@ -43,6 +46,14 @@ If you want to hack on this, the test you want to run is <code>com.gargoylesoftw
 make
 mvn install:install-file -DgroupId=webbit -DartifactId=webbit -Dversion=0.0.1 -Dpackaging=jar -Dfile=build/webbit.jar
 </pre>
+
+If you want to build htmlunit without running all of the tests (very slow):
+
+<pre>
+mvn clean install -Dmaven.test.skip=true
+</pre>
+
+When you have done this once, tack on <code>-o</code> to put maven offline and make it faster.
 
 h2. Implementation
 

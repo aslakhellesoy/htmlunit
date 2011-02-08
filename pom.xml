@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.sourceforge.htmlunit</groupId>
-    <artifactId>htmlunit</artifactId>
+    <artifactId>htmlunit-websocket</artifactId>
     <version>2.9-SNAPSHOT</version>
     <name>HtmlUnit</name>
     <organization>
@@ -162,7 +162,7 @@
                     <downloadJavadocs>true</downloadJavadocs>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <executions>
@@ -174,7 +174,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
         </plugins>
     </build>
     <profiles>
